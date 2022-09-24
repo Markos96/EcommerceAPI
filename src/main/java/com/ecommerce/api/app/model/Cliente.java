@@ -1,10 +1,10 @@
 package com.ecommerce.api.app.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -12,11 +12,12 @@ import javax.validation.constraints.NotNull;
 public class Cliente {
 
 	@Id
-	@NotNull
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@NotEmpty
 	private String dni;
+	
+	private boolean isVip;
 	
 	public Cliente() {
 		
@@ -42,6 +43,15 @@ public class Cliente {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+
+	public boolean isVip() {
+		return isVip;
+	}
+
+	public void setVip(boolean isVip) {
+		this.isVip = isVip;
+	}
+	
 	
 	
 }
