@@ -1,4 +1,4 @@
-package com.ecommerce.api.model;
+package com.ecommerce.api.app.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

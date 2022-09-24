@@ -1,9 +1,9 @@
-package com.ecommerce.api.service;
+package com.ecommerce.api.app.service;
 
 import java.util.List;
 
-import com.ecommerce.api.model.Cliente;
-import com.ecommerce.api.repository.ClienteRepository;
+import com.ecommerce.api.app.model.Cliente;
+import com.ecommerce.api.app.repository.ClienteRepository;
 
 public interface ClienteService extends ClienteRepository{
 
