@@ -20,14 +20,15 @@ public class ClienteService {
 	ClienteMapper clienteMapper = new ClienteMapper();
 	
 	
-	public Cliente guardarCliente(ClienteDTO clienteDTO) {
+	public Cliente guardarCliente(String DNI) {
 		
-		Cliente cliente = null;
+		Cliente cliente = new Cliente();
 		
-		if(existeCliente(clienteDTO.getDni())) {
-			cliente = obtenerUnCliente(clienteDTO.getDni());
+		if(existeCliente(DNI)) {
+			cliente = obtenerUnCliente(DNI);
 		}else {
-			cliente = clienteRepository.save(clienteMapper.toEntity(clienteDTO));
+			cliente.setDni(DNI);
+			cliente = clienteRepository.save(cliente);
 		}
 		
 		return cliente;
