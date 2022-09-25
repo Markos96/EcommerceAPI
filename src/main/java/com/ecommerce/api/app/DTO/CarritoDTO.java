@@ -5,6 +5,7 @@ import com.ecommerce.api.app.model.Cliente;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.Date;
+import java.util.List;
 
 public class CarritoDTO {
 
@@ -18,7 +19,10 @@ public class CarritoDTO {
 
     private Cliente cliente;
 
-    public CarritoDTO(Integer id_carrito, String nombre, Date fechaCreacion, Date fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente) {
+    public List<DCarritoDTO> listDetalles;
+
+
+    public CarritoDTO(Integer id_carrito, String nombre, Date fechaCreacion, Date fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente, List<DCarritoDTO>listDetalles) {
         this.id_carrito = id_carrito;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
@@ -27,6 +31,7 @@ public class CarritoDTO {
         this.isFinalizada = isFinalizada;
         this.total = total;
         this.cliente = cliente;
+        this.listDetalles = listDetalles;
     }
 
     public CarritoDTO(){
@@ -95,5 +100,13 @@ public class CarritoDTO {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<DCarritoDTO> getListDetalles() {
+        return listDetalles;
+    }
+
+    public void setListDetalles(List<DCarritoDTO> listDetalles) {
+        this.listDetalles = listDetalles;
     }
 }

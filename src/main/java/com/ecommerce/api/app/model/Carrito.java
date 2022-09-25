@@ -1,8 +1,6 @@
 package com.ecommerce.api.app.model;
 
-import com.ecommerce.api.app.DTO.ClienteDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.ecommerce.api.app.DTO.DCarritoDTO;
 import javax.persistence.*;
 import java.util.*;
 
@@ -12,7 +10,7 @@ public class Carrito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_carrito;
+    private Integer id;
     private String nombre;
     private Date fechaCreacion;
     private Date fechaFinalizacion;
@@ -24,6 +22,8 @@ public class Carrito {
     @JoinColumn(name = "id_cliente")
     public Cliente cliente;
 
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    public List<DCarrito> listDetalle = new ArrayList<>();
 
     public Carrito(){
 
@@ -31,7 +31,7 @@ public class Carrito {
 
     public Carrito(Integer id_carrito, String nombre, Date fechaCreacion, Date fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente) {
         super();
-        this.id_carrito = id_carrito;
+        this.id = id_carrito;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
         this.fechaFinalizacion = fechaFinalizacion;
@@ -41,12 +41,17 @@ public class Carrito {
         this.cliente = cliente;
     }
 
+    public Carrito(Integer id_carrito, List<DCarrito>listDetalle){
+        this.id = id_carrito;
+        this.listDetalle = listDetalle;
+    }
+
     public Integer getId_carrito() {
-        return id_carrito;
+        return id;
     }
 
     public void setId_carrito(Integer id_carrito) {
-        this.id_carrito = id_carrito;
+        this.id = id_carrito;
     }
 
     public String getNombre() {
@@ -103,5 +108,13 @@ public class Carrito {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<DCarrito> getListDetalle() {
+        return listDetalle;
+    }
+
+    public void setListDetalle(List<DCarrito> listDetalle) {
+        this.listDetalle = listDetalle;
     }
 }

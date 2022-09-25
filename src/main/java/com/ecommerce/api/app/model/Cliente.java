@@ -2,9 +2,7 @@ package com.ecommerce.api.app.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -19,7 +17,7 @@ public class Cliente {
 	
 	private boolean isVip;
 
-	@OneToMany(mappedBy = "id_carrito", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
 	public List<Carrito> listCarritos = new ArrayList<>();
 	
 	public Cliente() {

@@ -8,7 +8,7 @@ public class DCarrito {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id_detalle;
+    private Integer id;
 
     private String nombreProducto;
 
@@ -16,36 +16,36 @@ public class DCarrito {
 
     private Integer cantidadProducto;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "id_carrito")
-    Carrito id_carrito;
+    Carrito carrito;
 
     public DCarrito(){
 
     }
 
     public DCarrito(Integer id_detalle,Carrito id_carrito, String nombreProducto, Double precioProducto, Integer cantidadProducto) {
-        this.id_detalle = id_detalle;
-        this.id_carrito = id_carrito;
+        this.id = id_detalle;
+        this.carrito = id_carrito;
         this.nombreProducto = nombreProducto;
         this.precioProducto = precioProducto;
         this.cantidadProducto = cantidadProducto;
     }
 
     public Integer getId_detalle() {
-        return id_detalle;
+        return id;
     }
 
     public void setId_detalle(Integer id_detalle) {
-        this.id_detalle = id_detalle;
+        this.id = id_detalle;
     }
 
     public Carrito getId_carrito() {
-        return id_carrito;
+        return carrito;
     }
 
     public void setId_carrito(Carrito id_carrito) {
-        this.id_carrito = id_carrito;
+        this.carrito = id_carrito;
     }
 
     public String getNombreProducto() {

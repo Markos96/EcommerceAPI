@@ -2,6 +2,9 @@ package com.ecommerce.api.app.Mappers;
 
 import com.ecommerce.api.app.DTO.CarritoDTO;
 import com.ecommerce.api.app.model.Carrito;
+import com.ecommerce.api.app.model.DCarrito;
+
+import java.util.stream.Collectors;
 
 public class CarritoMapper {
 
@@ -17,7 +20,17 @@ public class CarritoMapper {
         carrito.setFinalizada(carritoDTO.isFinalizada());
         carrito.setTotal(carritoDTO.getTotal());
         carrito.setCliente(carritoDTO.getCliente());
-
+        carrito.setListDetalle(
+                carritoDTO.getListDetalles().stream()
+                        .map(
+                                ent -> new DCarrito(
+                                        ent.getIdDetalle(),
+                                        carrito,
+                                        ent.getNombreProducto(),
+                                        ent.getPrecioProducto(),
+                                        ent.getCantidadProducto()
+                                )
+                        ).collect(Collectors.toList()));
         return carrito;
     }
 
