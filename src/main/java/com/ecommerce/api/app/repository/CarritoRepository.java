@@ -16,4 +16,8 @@ import java.util.Optional;
 public interface CarritoRepository extends JpaRepository<Carrito, Integer> {
 
     CarritoDTO save(CarritoDTO carritoDTO);
+
+    @Query(value = "SELECT * FROM carritos c where c.id_cliente = ?1",
+            nativeQuery = true)
+    List<Carrito> findCarritosByIdCliente(Integer id);
 }

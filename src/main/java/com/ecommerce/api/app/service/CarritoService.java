@@ -29,9 +29,7 @@ public class CarritoService {
     }
 
     public List<Carrito> obtenerCarritos(Integer id){
-        return carritoRepository.findAll().stream()
-                .filter(carrito -> carrito.getCliente().getId() == id)
-                .collect(Collectors.toList());
+        return carritoRepository.findCarritosByIdCliente(id);
     }
 
 }
