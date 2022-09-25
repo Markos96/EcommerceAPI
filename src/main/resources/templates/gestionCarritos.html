@@ -54,7 +54,7 @@
                     <th>Tipo</th>
                     <th>Total</th>
                     <th>Cliente</th>
-                    <th class="text-center" colspan="3">Acciones</th>
+                    <th class="text-center" colspan="6">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,12 +63,14 @@
                         <td th:text="${carrito.nombre}"></td>
                         <td th:text="${carrito.fechaCreacion}"></td>
                         <td th:text="${carrito.fechaFinalizacion}"></td>
-                        <td th:text="${carrito.isSpecial}"></td>
+                        <td th:text="${carrito.isSpecial == true} ? Especial : Normal"></td>
                         <td th:text="${carrito.total}"></td>
                         <td th:text="${carrito.cliente.id}"></td>
-                        <td><button>Ver</button></td>
-                        <td><button>Eliminar</button></td>
-                        <td><button>Finalizar</button></td>
+                        <div>
+                            <td><a class="btn btn-primary btn-sm" th:href="@{/carritos/ver/{id}(id= ${carrito.id})}">Ver</a></td>
+                            <td><a class="btn btn-danger btn-sm" th:href="@{/carritos/delete/{id}(id = ${carrito.id})}">Eliminar</a></td>
+                            <td><a class="btn btn-success btn-sm">Finalizar</a></td>
+                        </div>
                     </tr>
                 </tbody>
             </table>

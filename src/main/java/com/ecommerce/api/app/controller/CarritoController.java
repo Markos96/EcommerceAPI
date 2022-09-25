@@ -39,6 +39,15 @@ public class CarritoController {
         return model;
     }
 
+    @GetMapping("/ver/{id}")
+    public ModelAndView formProductos(@PathVariable("id") Integer id){
+        ModelAndView model = new ModelAndView();
+        model.addObject("carrito", id);
+        model.setViewName("agregarProducto");
+
+        return model;
+    }
+
     @PostMapping(value = "/save/{id}")
     public ModelAndView agregarCarrito(@PathVariable("id") Integer idCliente, String nombre, String tipo, ModelAndView model) {
         CarritoDTO carrito = new CarritoDTO();
@@ -51,6 +60,17 @@ public class CarritoController {
         model.addObject("cliente", cliente.getDni());
         model.addObject("isVip", cliente.isVip());
         model.addObject("carritos", service.obtenerCarritos(idCliente));
+        model.setViewName("gestionCarritos");
+
+        return model;
+    }
+
+    @GetMapping(value="/delete/{id}")
+    public ModelAndView eliminarCarrito(@PathVariable("id") Integer id) {
+
+        ModelAndView model = new ModelAndView();
+
+        carritoService.deleteCarrito(id);
         model.setViewName("gestionCarritos");
 
         return model;

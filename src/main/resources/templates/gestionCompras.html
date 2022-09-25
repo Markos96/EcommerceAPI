@@ -33,7 +33,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="">
+                    <tr>
+                        <td th:text="${id_cliente}"></td>
+                        <td th:text="${cliente}"></td>
+                        <td th:text="${isVip == false} ? 'NO' : 'SI'"></td>
                     </tr>
                 </tbody>
             </table>

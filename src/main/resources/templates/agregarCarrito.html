@@ -12,16 +12,23 @@
 </head>
 <body style="background-color:grey">
 <div class="container">
-    <p th:text="${id_cliente}"></p>
     <h1 class="text-center">Agregar Carrito</h1>
-    <form method="post" th:action="@{/carritos/save/{id}(id = ${id_cliente})}">
-        <label for="nombre">Nombre del carro</label>
-        <input type="text" name="nombre" id="nombre">
-        <select name="tipo">
-            <option value="especial">ESPECIAL</option>
-            <option value="normal">NORMAL</option>
-        </select>
-        <button type="submit">Crear</button>
+    <hr>
+    <form method="post" style="text-align:center" th:action="@{/carritos/save/{id}(id = ${id_cliente})}">
+        <div class="form-group">
+            <label for="nombre">Nombre Carro</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" style="width:200px; margin-left:550px" aria-describedby="emailHelp" placeholder="Ingrese nombre" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" id="tipo">
+                <option value="especial">ESPECIAL</option>
+                <option value="normal">NORMAL</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Crear Carro</button>
     </form>
 </div>
 </body>

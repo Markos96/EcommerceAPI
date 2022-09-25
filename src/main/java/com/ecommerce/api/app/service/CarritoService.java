@@ -34,4 +34,8 @@ public class CarritoService {
                 .collect(Collectors.toList());
     }
 
+    public void deleteCarrito(Integer id){
+        carritoRepository.deleteById(id);
+    }
+
 }
