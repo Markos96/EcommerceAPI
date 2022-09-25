@@ -1,7 +1,9 @@
 package com.ecommerce.api.app.controller;
 
 import com.ecommerce.api.app.DTO.CarritoDTO;
+import com.ecommerce.api.app.DTO.ClienteDTO;
 import com.ecommerce.api.app.service.CarritoService;
+import com.ecommerce.api.app.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,9 @@ public class CarritoController {
 
     @Autowired
     CarritoService carritoService;
+
+    @Autowired
+    private ClienteService service;
 
     @PostMapping(value="/saveCarrito")
     public String agregarCarrito(@RequestBody @NotNull CarritoDTO carritoDTO, Model model){
@@ -35,11 +40,19 @@ public class CarritoController {
     }
 
     @PostMapping(value = "/save/{id}")
-    public void agregarCarrito(@PathVariable("id") Integer idCliente, String nombre, String tipo) {
+    public ModelAndView agregarCarrito(@PathVariable("id") Integer idCliente, String nombre, String tipo, ModelAndView model) {
         CarritoDTO carrito = new CarritoDTO();
         carrito.getCliente().setId(idCliente);
         carrito.setNombre(nombre);
         carrito.setSpecial(tipo.equals("especial"));
         carritoService.saveCarrito(carrito);
+        ClienteDTO cliente = service.obtenerClienteById(idCliente);
+        model.addObject("id_cliente", cliente.getId());
+        model.addObject("cliente", cliente.getDni());
+        model.addObject("isVip", cliente.isVip());
+        model.addObject("carritos", service.obtenerCarritos(idCliente));
+        model.setViewName("gestionCarritos");
+
+        return model;
     }
 }

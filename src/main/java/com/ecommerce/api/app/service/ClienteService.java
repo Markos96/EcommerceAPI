@@ -52,4 +52,8 @@ public class ClienteService {
 	public List<Carrito> obtenerCarritos(Integer id) {
 		return carritoService.obtenerCarritos(id);
 	}
+
+	public ClienteDTO obtenerClienteById(Integer id) {
+		return clienteMapper.toDTO(clienteRepository.findById(id).orElse(new Cliente()));
+	}
 }
