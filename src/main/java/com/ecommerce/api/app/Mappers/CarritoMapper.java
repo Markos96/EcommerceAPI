@@ -16,6 +16,7 @@ public class CarritoMapper {
         carrito.setSpecial(carritoDTO.isSpecial());
         carrito.setFinalizada(carritoDTO.isFinalizada());
         carrito.setTotal(carritoDTO.getTotal());
+        carrito.setCliente(carritoDTO.getCliente());
 
         return carrito;
     }

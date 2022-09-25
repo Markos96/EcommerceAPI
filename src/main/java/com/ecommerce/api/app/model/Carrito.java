@@ -12,19 +12,12 @@ public class Carrito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name="id", columnDefinition = "INT UNSIGNED")
     private Integer id_carrito;
-    //@Column(name="nombre", columnDefinition = "VARCHAR(45)")
     private String nombre;
-    //@Column(name="fechaCreacion", columnDefinition = "DATE")
     private Date fechaCreacion;
-    //@Column(name="fechaFinalizacion", columnDefinition = "DATE")
     private Date fechaFinalizacion;
-    //@Column(name="isSpecial")
     private boolean isSpecial;
-    //@Column(name="isFinalizada")
     private boolean isFinalizada;
-   // @Column(name="total")
     private Double total;
 
     @ManyToOne

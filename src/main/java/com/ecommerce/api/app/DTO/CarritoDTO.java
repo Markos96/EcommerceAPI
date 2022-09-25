@@ -16,7 +16,9 @@ public class CarritoDTO {
     private boolean isFinalizada;
     private Double total;
 
-    public CarritoDTO(Integer id_carrito, String nombre, Date fechaCreacion, Date fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total) {
+    private Cliente cliente;
+
+    public CarritoDTO(Integer id_carrito, String nombre, Date fechaCreacion, Date fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente) {
         this.id_carrito = id_carrito;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
@@ -24,6 +26,7 @@ public class CarritoDTO {
         this.isSpecial = isSpecial;
         this.isFinalizada = isFinalizada;
         this.total = total;
+        this.cliente = cliente;
     }
 
     public CarritoDTO(){
@@ -86,4 +89,11 @@ public class CarritoDTO {
         this.total = total;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
