@@ -32,4 +32,8 @@ public class CarritoService {
         return carritoRepository.findCarritosByIdCliente(id);
     }
 
+    public void deleteCarrito(Integer id){
+        carritoRepository.deleteById(id);
+    }
+
 }
