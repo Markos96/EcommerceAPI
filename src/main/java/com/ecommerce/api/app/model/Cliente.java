@@ -1,7 +1,9 @@
 package com.ecommerce.api.app.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -17,16 +19,18 @@ public class Cliente {
 	
 	private boolean isVip;
 
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.DETACH)
-	private Set<Carrito> listCarritos = new HashSet<>();
+	@OneToMany(mappedBy = "id_carrito", cascade = CascadeType.ALL)
+	public List<Carrito> listCarritos = new ArrayList<>();
 	
 	public Cliente() {
 		
 	}
 	
-	public Cliente(Integer id, String dni){
+	public Cliente(Integer id, String dni, boolean isVip, List<Carrito> listCarritos){
 		this.id = id;
 		this.dni = dni;
+		this.isVip = isVip;
+		this.listCarritos = listCarritos;
 	}
 
 	public Integer getId() {
@@ -53,11 +57,11 @@ public class Cliente {
 		this.isVip = isVip;
 	}
 
-	public Set<Carrito> getListCarritos() {
+	public List<Carrito> getListCarritos() {
 		return listCarritos;
 	}
 
-	public void setListCarritos(Set<Carrito> listCarritos) {
+	public void setListCarritos(List<Carrito> listCarritos) {
 		this.listCarritos = listCarritos;
 	}
 }

@@ -1,12 +1,9 @@
 package com.ecommerce.api.app.service;
 
 import java.util.List;
-
-import com.ecommerce.api.app.DTO.ClienteDTO;
 import com.ecommerce.api.app.Mappers.ClienteMapper;
 import com.ecommerce.api.app.model.Cliente;
 import com.ecommerce.api.app.repository.ClienteRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

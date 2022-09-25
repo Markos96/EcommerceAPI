@@ -18,11 +18,14 @@
                 <hr>
                 <div class="mb-3">
                     <label for="DNI" class="form-label text-center">DNI</label>
-                    <input type="DNI" class="form-control" id="DNI" name="DNI" aria-describedby="DNI" required placeholder="Ingrese el DNI del cliente">
+                    <input type="DNI" class="form-control" id="DNI" name="DNI" aria-describedby="DNI" placeholder="Ingrese el DNI del cliente" required >
                 </div>
                 <hr>
                     <button class="btn btn-primary m-3" type="submit" value="Gestion Compras" name="GCP">Gestión Compras</button>
                     <button class="btn btn-primary m-1" type="submit" value="Gestion Carritos" name="GCA">Gestión Carritos</button>
+            </form>
+            <form th:action="@{/carritos/list}">
+                <button class="btn btn-primary m-1" type="submit" value="Gestion Carritos">Gestión Carritos</button>
             </form>
         </div>
     </div>

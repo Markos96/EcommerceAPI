@@ -1,5 +1,9 @@
 package com.ecommerce.api.app.DTO;
 
+import com.ecommerce.api.app.model.Carrito;
+
+import java.util.List;
+
 public class ClienteDTO {
 
 	private Integer id;
@@ -7,6 +11,8 @@ public class ClienteDTO {
 	private String dni;
 	
 	private boolean isVip;
+
+	private List<CarritoDTO> listaCarritosDTO;
 
 	public Integer getId() {
 		return id;
@@ -31,8 +37,12 @@ public class ClienteDTO {
 	public void setVip(boolean isVip) {
 		this.isVip = isVip;
 	}
-	
-	
-	
-	
+
+	public List<CarritoDTO> getListaCarritos() {
+		return listaCarritosDTO;
+	}
+
+	public void setListaCarritos(List<CarritoDTO> listaCarritos) {
+		this.listaCarritosDTO = listaCarritos;
+	}
 }

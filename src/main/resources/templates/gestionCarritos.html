@@ -56,13 +56,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td th:text="${nombre}"></td>
-                    <td th:text="${id_carrito}"></td>
-                    <td th:text="${isVip == false} ? 'NO' : 'SI'"></td>
-                </tr>
+                <p th:text="${listaCarritos}"></p>
+                <p th:text="${listaCarritos.id_carrito}}"></p>
                 </tbody>
             </table>
+
         </div>
     </div>
         <hr>
