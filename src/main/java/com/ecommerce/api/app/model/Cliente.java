@@ -1,34 +1,27 @@
 package com.ecommerce.api.app.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
-@Table(name = "cliente", uniqueConstraints = {@UniqueConstraint(columnNames = {"dni"})})
+@Table(name = "clientes", uniqueConstraints = {@UniqueConstraint(columnNames = {"dni"})})
 public class Cliente {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
 	private String dni;
-	
 	private boolean isVip;
 
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-	public List<Carrito> listCarritos = new ArrayList<>();
-	
 	public Cliente() {
 		
 	}
 	
-	public Cliente(Integer id, String dni, boolean isVip, List<Carrito> listCarritos){
+	public Cliente(Integer id, String dni, boolean isVip){
 		this.id = id;
 		this.dni = dni;
 		this.isVip = isVip;
-		this.listCarritos = listCarritos;
 	}
 
 	public Integer getId() {
@@ -55,11 +48,4 @@ public class Cliente {
 		this.isVip = isVip;
 	}
 
-	public List<Carrito> getListCarritos() {
-		return listCarritos;
-	}
-
-	public void setListCarritos(List<Carrito> listCarritos) {
-		this.listCarritos = listCarritos;
-	}
 }

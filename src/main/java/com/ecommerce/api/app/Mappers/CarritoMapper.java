@@ -12,7 +12,7 @@ public class CarritoMapper {
 
         Carrito carrito = new Carrito();
 
-        carrito.setId_carrito(carritoDTO.getId_carrito());
+        carrito.setId(carritoDTO.getId_carrito());
         carrito.setNombre(carritoDTO.getNombre());
         carrito.setFechaCreacion(carritoDTO.getFechaCreacion());
         carrito.setFechaFinalizacion(carritoDTO.getFechaFinalizacion());
@@ -20,17 +20,6 @@ public class CarritoMapper {
         carrito.setFinalizada(carritoDTO.isFinalizada());
         carrito.setTotal(carritoDTO.getTotal());
         carrito.setCliente(carritoDTO.getCliente());
-        carrito.setListDetalle(
-                carritoDTO.getListDetalles().stream()
-                        .map(
-                                ent -> new DCarrito(
-                                        ent.getIdDetalle(),
-                                        carrito,
-                                        ent.getNombreProducto(),
-                                        ent.getPrecioProducto(),
-                                        ent.getCantidadProducto()
-                                )
-                        ).collect(Collectors.toList()));
         return carrito;
     }
 

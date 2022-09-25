@@ -14,6 +14,12 @@ public class ClienteDTO {
 
 	private List<CarritoDTO> listaCarritosDTO;
 
+	public ClienteDTO (Integer id, String dni, boolean isVip) {
+		this.id = id;
+		this.dni = dni;
+		this.isVip = isVip;
+	}
+
 	public Integer getId() {
 		return id;
 	}

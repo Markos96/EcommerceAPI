@@ -41,7 +41,7 @@
     <br>
     <div class="card bg-light">
         <div class="card-header">
-            <h3>Detalle Compras</h3>
+            <h3>Carritos</h3>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -53,14 +53,25 @@
                     <th>Fecha Fin</th>
                     <th>Tipo</th>
                     <th>Total</th>
+                    <th>Cliente</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                <p th:text="${listaCarritos}"></p>
-                <p th:text="${listaCarritos.id_carrito}}"></p>
+                    <tr th:each="carrito : ${carritos}">
+                        <td th:text="${carrito.id}"></td>
+                        <td th:text="${carrito.nombre}"></td>
+                        <td th:text="${carrito.fechaCreacion}"></td>
+                        <td th:text="${carrito.fechaFinalizacion}"></td>
+                        <td th:text="${carrito.isSpecial}"></td>
+                        <td th:text="${carrito.total}"></td>
+                        <td th:text="${carrito.cliente.id}"></td>
+                        <td><button>Ver</button></td>
+                        <td><button>Eliminar</button></td>
+                    </tr>
                 </tbody>
             </table>
-
+            <button>Agregar</button>
         </div>
     </div>
         <hr>

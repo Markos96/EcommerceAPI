@@ -21,6 +21,7 @@ public class CarritoController {
     @Autowired
     CarritoService carritoService;
 
+/*
     @RequestMapping(value="/list", method= RequestMethod.GET)
     public String listarCarritos(Model model){
         List<Carrito> listaCarritos = carritoService.obtenerCarritos();
@@ -29,6 +30,7 @@ public class CarritoController {
 
         return "gestionCarritos";
     }
+*/
 
     @PostMapping(value="/saveCarrito")
     public String agregarCarrito(@RequestBody @NotNull CarritoDTO carritoDTO, Model model){

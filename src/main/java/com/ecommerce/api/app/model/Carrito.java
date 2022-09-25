@@ -1,15 +1,14 @@
 package com.ecommerce.api.app.model;
 
-import com.ecommerce.api.app.DTO.DCarritoDTO;
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table(name = "carrito")
+@Table(name = "carritos")
 public class Carrito {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private Date fechaCreacion;
@@ -17,13 +16,9 @@ public class Carrito {
     private boolean isSpecial;
     private boolean isFinalizada;
     private Double total;
-
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     public Cliente cliente;
-
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-    public List<DCarrito> listDetalle = new ArrayList<>();
 
     public Carrito(){
 
@@ -43,14 +38,13 @@ public class Carrito {
 
     public Carrito(Integer id_carrito, List<DCarrito>listDetalle){
         this.id = id_carrito;
-        this.listDetalle = listDetalle;
     }
 
-    public Integer getId_carrito() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId_carrito(Integer id_carrito) {
+    public void setId(Integer id_carrito) {
         this.id = id_carrito;
     }
 
@@ -110,11 +104,4 @@ public class Carrito {
         this.cliente = cliente;
     }
 
-    public List<DCarrito> getListDetalle() {
-        return listDetalle;
-    }
-
-    public void setListDetalle(List<DCarrito> listDetalle) {
-        this.listDetalle = listDetalle;
-    }
 }

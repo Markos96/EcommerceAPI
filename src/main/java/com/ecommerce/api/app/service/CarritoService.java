@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarritoService {
@@ -25,8 +26,10 @@ public class CarritoService {
         return carritoRepository.findById(id).get();
     }
 
-    public List<Carrito> obtenerCarritos(){
-        return carritoRepository.findAll();
+    public List<Carrito> obtenerCarritos(Integer id){
+        return carritoRepository.findAll().stream()
+                .filter(carrito -> carrito.getCliente().getId() == id)
+                .collect(Collectors.toList());
     }
 
 }
