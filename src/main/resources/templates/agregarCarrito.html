@@ -12,8 +12,17 @@
 </head>
 <body style="background-color:grey">
 <div class="container">
-    <h1 class="text-center">GESTIÓN COMPRAS</h1>
-
+    <p th:text="${id_cliente}"></p>
+    <h1 class="text-center">Agregar Carrito</h1>
+    <form method="post" th:action="@{/carritos/save/{id}(id = ${id_cliente})}">
+        <label for="nombre">Nombre del carro</label>
+        <input type="text" name="nombre" id="nombre">
+        <select name="tipo">
+            <option value="especial">ESPECIAL</option>
+            <option value="normal">NORMAL</option>
+        </select>
+        <button type="submit">Crear</button>
+    </form>
 </div>
 </body>
 </html>

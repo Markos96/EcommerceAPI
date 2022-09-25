@@ -1,18 +1,14 @@
 package com.ecommerce.api.app.controller;
 
 import com.ecommerce.api.app.DTO.CarritoDTO;
-import com.ecommerce.api.app.model.Carrito;
 import com.ecommerce.api.app.service.CarritoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Controller
 @RequestMapping("/carritos")
@@ -21,23 +17,29 @@ public class CarritoController {
     @Autowired
     CarritoService carritoService;
 
-/*
-    @RequestMapping(value="/list", method= RequestMethod.GET)
-    public String listarCarritos(Model model){
-        List<Carrito> listaCarritos = carritoService.obtenerCarritos();
-
-        model.addAttribute("listaCarritos", listaCarritos);
-
-        return "gestionCarritos";
-    }
-*/
-
     @PostMapping(value="/saveCarrito")
     public String agregarCarrito(@RequestBody @NotNull CarritoDTO carritoDTO, Model model){
         carritoService.saveCarrito(carritoDTO);
 
         model.addAttribute("carrito", carritoDTO);
 
-        return "index";
+        return "redirect: /clientes/save";
+    }
+
+    @GetMapping("/{id}")
+    public ModelAndView formCarrito(@PathVariable("id") Integer id){
+        ModelAndView model = new ModelAndView();
+        model.addObject("id_cliente", id);
+        model.setViewName("agregarCarrito");
+        return model;
+    }
+
+    @PostMapping(value = "/save/{id}")
+    public void agregarCarrito(@PathVariable("id") Integer idCliente, String nombre, String tipo) {
+        CarritoDTO carrito = new CarritoDTO();
+        carrito.getCliente().setId(idCliente);
+        carrito.setNombre(nombre);
+        carrito.setSpecial(tipo.equals("especial"));
+        carritoService.saveCarrito(carrito);
     }
 }

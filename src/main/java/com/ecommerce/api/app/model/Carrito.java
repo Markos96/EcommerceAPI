@@ -1,6 +1,7 @@
 package com.ecommerce.api.app.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -11,8 +12,8 @@ public class Carrito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
-    private Date fechaCreacion;
-    private Date fechaFinalizacion;
+    private LocalDate fechaCreacion;
+    private LocalDate fechaFinalizacion;
     private boolean isSpecial;
     private boolean isFinalizada;
     private Double total;
@@ -24,7 +25,7 @@ public class Carrito {
 
     }
 
-    public Carrito(Integer id_carrito, String nombre, Date fechaCreacion, Date fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente) {
+    public Carrito(Integer id_carrito, String nombre, LocalDate fechaCreacion, LocalDate fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente) {
         super();
         this.id = id_carrito;
         this.nombre = nombre;
@@ -56,19 +57,19 @@ public class Carrito {
         this.nombre = nombre;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getFechaFinalizacion() {
+    public LocalDate getFechaFinalizacion() {
         return fechaFinalizacion;
     }
 
-    public void setFechaFinalizacion(Date fechaFinalizacion) {
+    public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 

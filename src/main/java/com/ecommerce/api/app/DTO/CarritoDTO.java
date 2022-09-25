@@ -2,17 +2,16 @@ package com.ecommerce.api.app.DTO;
 
 import com.ecommerce.api.app.model.Cliente;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarritoDTO {
 
     private Integer id_carrito;
     private String nombre;
-    private Date fechaCreacion;
-    private Date fechaFinalizacion;
+    private LocalDate fechaCreacion;
+    private LocalDate fechaFinalizacion;
     private boolean isSpecial;
     private boolean isFinalizada;
     private Double total;
@@ -22,7 +21,7 @@ public class CarritoDTO {
     public List<DCarritoDTO> listDetalles;
 
 
-    public CarritoDTO(Integer id_carrito, String nombre, Date fechaCreacion, Date fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente, List<DCarritoDTO>listDetalles) {
+    public CarritoDTO(Integer id_carrito, String nombre, LocalDate fechaCreacion, LocalDate fechaFinalizacion, boolean isSpecial, boolean isFinalizada, Double total, Cliente cliente, List<DCarritoDTO>listDetalles) {
         this.id_carrito = id_carrito;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
@@ -35,7 +34,15 @@ public class CarritoDTO {
     }
 
     public CarritoDTO(){
-
+        id_carrito = 0;
+        nombre = "";
+        fechaCreacion = null;
+        fechaFinalizacion = null;
+        isSpecial = false;
+        isFinalizada = false;
+        total = 0d;
+        cliente = new Cliente();
+        listDetalles = new ArrayList<>();
     }
 
     public Integer getId_carrito() {
@@ -54,19 +61,19 @@ public class CarritoDTO {
         this.nombre = nombre;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getFechaFinalizacion() {
+    public LocalDate getFechaFinalizacion() {
         return fechaFinalizacion;
     }
 
-    public void setFechaFinalizacion(Date fechaFinalizacion) {
+    public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 

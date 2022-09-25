@@ -2,9 +2,6 @@ package com.ecommerce.api.app.Mappers;
 
 import com.ecommerce.api.app.DTO.CarritoDTO;
 import com.ecommerce.api.app.model.Carrito;
-import com.ecommerce.api.app.model.DCarrito;
-
-import java.util.stream.Collectors;
 
 public class CarritoMapper {
 
