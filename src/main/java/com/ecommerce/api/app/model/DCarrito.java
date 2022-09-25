@@ -10,15 +10,15 @@ public class DCarrito {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id_detalle;
 
-    @ManyToOne
-    @JoinColumn(name = "id_carrito")
-    Carrito id_carrito;
-
     private String nombreProducto;
 
     private Double precioProducto;
 
     private Integer cantidadProducto;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_carrito")
+    Carrito id_carrito;
 
     public DCarrito(){
 

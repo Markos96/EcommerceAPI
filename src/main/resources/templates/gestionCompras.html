@@ -10,10 +10,72 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </head>
-<body>
-    <h1>GESTION COMPRAS</h1>
-    <p th:text="${id_cliente}"></p>
-    <p th:text="${cliente}"></p>
-    <p th:text="${isVip}"></p>
+<body style="background-color:grey">
+<div class="container">
+    <h1 class="text-center">GESTIÓN COMPRAS</h1>
+    <hr>
+    <div>
+        <label for="fechaCompra">Fecha:</label>
+        <input id="fechaCompra" name="fechaCompra" type="date" style="background-color: #929395">
+    </div>
+    <br>
+    <div class="card bg-light">
+        <div class="card-header">
+            <h3>Detalle Cliente</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>VIP</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${id_cliente}"></td>
+                    <td th:text="${cliente}"></td>
+                    <td th:text="${isVip == false} ? 'NO' : 'SI'"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="card bg-light">
+        <div class="card-header">
+            <h3>Detalle Compras</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Tipo</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${nombre}"></td>
+                    <td th:text="${id_carrito}"></td>
+                    <td th:text="${isVip == false} ? 'NO' : 'SI'"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="text-center">
+        <a style="border-style:groove" th:href="@{/}">Volver</a>
+    </div>
+
+</div>
 </body>
 </html>

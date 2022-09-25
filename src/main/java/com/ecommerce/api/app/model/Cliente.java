@@ -1,14 +1,12 @@
 package com.ecommerce.api.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "cliente", uniqueConstraints = {@UniqueConstraint(columnNames = {"dni"})})
 public class Cliente {
 
 	@Id
@@ -18,6 +16,9 @@ public class Cliente {
 	private String dni;
 	
 	private boolean isVip;
+
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.DETACH)
+	private Set<Carrito> listCarritos = new HashSet<>();
 	
 	public Cliente() {
 		
@@ -51,7 +52,12 @@ public class Cliente {
 	public void setVip(boolean isVip) {
 		this.isVip = isVip;
 	}
-	
-	
-	
+
+	public Set<Carrito> getListCarritos() {
+		return listCarritos;
+	}
+
+	public void setListCarritos(Set<Carrito> listCarritos) {
+		this.listCarritos = listCarritos;
+	}
 }

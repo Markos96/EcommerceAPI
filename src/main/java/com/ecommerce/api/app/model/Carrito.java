@@ -1,7 +1,9 @@
 package com.ecommerce.api.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "carrito")
@@ -17,9 +19,13 @@ public class Carrito {
     private boolean isFinalizada;
     private Double total;
 
-    @ManyToOne
+    @ManyToOne(fetch= FetchType.LAZY, optional = false)
     @JoinColumn(name="id_cliente")
-    Cliente cliente;
+    @JsonIgnore
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "id_carrito", cascade = CascadeType.ALL)
+    private List<DCarrito> listDetalle = new ArrayList<DCarrito>();
 
     public Carrito(){
 
@@ -100,4 +106,15 @@ public class Carrito {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public void getClienteId(Integer clienteID){}
+
+    public List<DCarrito> getListDetalle() {
+        return listDetalle;
+    }
+
+    public void setListDetalle(List<DCarrito> listDetalle) {
+        this.listDetalle = listDetalle;
+    }
+
 }

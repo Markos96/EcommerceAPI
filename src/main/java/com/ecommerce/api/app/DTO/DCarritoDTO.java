@@ -4,23 +4,33 @@ import com.ecommerce.api.app.model.Carrito;
 
 public class DCarritoDTO {
 
-    Carrito id_carrito;
-
+    private Integer idDetalle;
     private String nombreProducto;
 
     private Double precioProducto;
 
     private Integer cantidadProducto;
 
+    Carrito id_carrito;
+
     public DCarritoDTO(){
 
     }
 
-    public DCarritoDTO(Carrito id_carrito, String nombreProducto, Double precioProducto, Integer cantidadProducto) {
+    public DCarritoDTO(Integer idDetalle,Carrito id_carrito, String nombreProducto, Double precioProducto, Integer cantidadProducto) {
+        this.idDetalle = idDetalle;
         this.id_carrito = id_carrito;
         this.nombreProducto = nombreProducto;
         this.precioProducto = precioProducto;
         this.cantidadProducto = cantidadProducto;
+    }
+
+    public Integer getIdDetalle() {
+        return idDetalle;
+    }
+
+    public void setIdDetalle(Integer idDetalle) {
+        this.idDetalle = idDetalle;
     }
 
     public Carrito getId_carrito() {

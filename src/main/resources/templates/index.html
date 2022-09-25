@@ -10,19 +10,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div class="container d-flex justify-content-center align-items-center">
-        <div class="d-flex justify-content-center align-items-center flex-column mt-5" style="width: 500px;">
+<body style="background-color:grey">
+    <div class="container d-flex justify-content-center align-items-center" style="height: 840px;">
+        <div class="d-flex justify-content-center align-items-center flex-column mt-5" style="border-style:double; padding:30px; background-color: #646464">
             <form th:action="@{/clientes/save}" method="post">
-                <h1 class="text-center">Carritos Marquitos</h1>
+                <h1 class="text-center">Gestión de Compras</h1>
+                <hr>
                 <div class="mb-3">
-                    <label for="DNI" class="form-label">DNI Cliente</label>
-                    <input type="DNI" class="form-control" id="DNI" name="DNI" aria-describedby="DNI">
+                    <label for="DNI" class="form-label text-center">DNI</label>
+                    <input type="DNI" class="form-control" id="DNI" name="DNI" aria-describedby="DNI" required placeholder="Ingrese el DNI del cliente">
                 </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary m-1" type="submit" value="Gestion Compras" name="GCP">Gestion Compras</button>
-                    <button class="btn btn-primary m-1" type="submit" value="Gestion Carritos" name="GCA">Gestion Carritos</button>
-                </div>
+                <hr>
+                    <button class="btn btn-primary m-3" type="submit" value="Gestion Compras" name="GCP">Gestión Compras</button>
+                    <button class="btn btn-primary m-1" type="submit" value="Gestion Carritos" name="GCA">Gestión Carritos</button>
             </form>
         </div>
     </div>
